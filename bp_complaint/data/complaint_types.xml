@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--  Create default complaint types  -->
+        <record model="bp.complaint.type" id="bp_ct_1">
+            <field name="name">Question</field>
+        </record>
+        <record model="bp.complaint.type" id="bp_ct_2">
+            <field name="name">Electricity</field>
+        </record>
+        <record model="bp.complaint.type" id="bp_ct_3">
+            <field name="name">Water</field>
+        </record>
+        <record model="bp.complaint.type" id="bp_ct_4">
+            <field name="name">Heating</field>
+        </record>
+
+    </data>
+</odoo>

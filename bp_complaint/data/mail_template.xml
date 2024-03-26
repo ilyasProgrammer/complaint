@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mail_template_complaint_received" model="mail.template">
+        <field name="name">Complaint Received</field>
+        <field name="model_id" ref="bp_complaint.model_bp_complaint"/>
+        <field name="subject">Complaint {{ object.name or 'n/a' }}</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.email_from }}</field>
+        <field name="description">Sent automatically to customers when complaint created</field>
+        <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+<p style="margin: 0px; padding: 0px; font-size: 13px;">
+    Dear <t t-out="object.tenant_name or ''">tenant</t>,
+    <br/><br/>
+    Please be advised that your complaint <t t-out="object.name or ''"></t>
+    has been received.
+    <br/><br/>
+    Do not hesitate to contact us if you have any questions.
+    <br/>
+</p>
+</div>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bc001,bc001,model_bp_complaint,base.group_user,1,1,1,0
+bc002,bc002,model_bp_complaint,base.group_system,1,1,1,1
+bt001,bt001,model_bp_complaint_type,base.group_user,1,1,1,0
+bt002,bt002,model_bp_complaint_type,base.group_system,1,1,1,1

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_workorder_report_document">
+        <t t-call="l10n_din5008.external_layout_din5008">
+            <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+            <t t-set="company" t-value="env.company"/>
+            <t t-set="address">
+                <div t-field="o.partner_id"
+                     t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True, "phone_icons": True}'/>
+            </t>
+            <div class="page">
+                <div class="oe_structure"/>
+
+                <h4>Problem Description</h4>
+                <t t-esc="o.description"/>
+
+                <br/>
+                <br/>
+
+                <h4>Action Plan</h4>
+                <t t-esc="o.workorder_todo"/>
+
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="workorder_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="bp_complaint.report_workorder_report_document" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="report_report_workorder" model="ir.actions.report">
+        <field name="name">Workorder</field>
+        <field name="model">bp.complaint</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bp_complaint.workorder_report</field>
+        <field name="report_file">bp_complaint.workorder_report</field>
+        <field name="print_report_name">'Workorder - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_bp_complaint"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="l10n_din5008.paperformat_euro_din"/>
+    </record>
+
+</odoo>
